@@ -1,0 +1,22 @@
+<div class="products-list">
+
+    <div *ngIf="!loading">
+        <div *ngIf="cart.length !== 0">Total items count: {{cart.length}}</div>
+        <hr>
+        <div class="cart-section" *ngFor="let item of cart">
+            <p><strong>{{item.name}}</strong> - Price: {{item.price}}</p>
+            <p>
+                Quantity: {{item.quantity}} 
+                <a [routerLink]="['/cart/remove', item.id]" href="#" class="btn btn-danger" title="Remove one">-</a>
+                <a *ngIf="item.available - item.quantity !== 0" [routerLink]="['/cart/add', item.id]" href="#" class="btn btn-success" title="Add one">+</a>
+                <a *ngIf="item.available - item.quantity === 0" [routerLink]="['/cart/add', item.id]" href="#" class="btn btn-success disabled" title="Add one">+</a>
+            </p>            
+        </div>
+        <div *ngIf="cart.length === 0">The cart is empty</div>
+        <hr>
+    </div>
+    <a *ngIf="cart.length == 0" href="#" routerLink="/check-out" class="btn btn-primary disabled">Check out</a>
+    <a *ngIf="cart.length > 0" href="#" routerLink="/check-out" class="btn btn-primary">Check out</a>
+    <p *ngIf="loading">Loading ...</p>
+
+</div>

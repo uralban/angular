@@ -1,0 +1,50 @@
+<div class="check-out">
+    <form [formGroup]="checkOutForm">
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input 
+                type="firstName" 
+                class="form-control" 
+                id="firstName" 
+                aria-describedby="firstNameHelp"
+                formControlName="firstName">            
+            <div class="errors" *ngIf="checkOutForm.controls.firstName.status === 'INVALID'" >
+                <div>Field not valid: {{ checkOutForm.controls.firstName.errors.custom.message }}</div>
+            </div>
+        </div><div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input 
+                type="lastName" 
+                class="form-control" 
+                id="lastName" 
+                aria-describedby="lastNameHelp"
+                formControlName="lastName">            
+            <div class="errors" *ngIf="checkOutForm.controls.lastName.status === 'INVALID'" >
+                <div>Field not valid: {{ checkOutForm.controls.lastName.errors.custom.message }}</div>
+            </div>
+        </div><div class="form-group">
+            <label for="tel">Phone</label>
+            <input 
+                type="tel" 
+                class="form-control" 
+                id="tel" 
+                aria-describedby="telHelp"
+                formControlName="tel">            
+            <div class="errors" *ngIf="checkOutForm.controls.tel.status === 'INVALID'" >
+               <div>Phone is invalid</div>
+            </div>
+        </div><div class="form-group">
+            <label for="email">Email address</label>
+            <input 
+                type="email" 
+                class="form-control" 
+                id="email" 
+                aria-describedby="emailHelp"
+                formControlName="email">            
+            <div class="errors" *ngIf="checkOutForm.controls.email.status === 'INVALID'" >
+                <div>Email is invalid</div>
+            </div>
+        </div>
+        <button type="submit" [disabled]="checkOutForm.status === 'INVALID'" (click)="submitAction($event)" class="btn btn-primary">Check out</button>
+    </form>
+</div>

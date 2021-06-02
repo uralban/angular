@@ -1,0 +1,14 @@
+<div class="products-list">
+
+    <div *ngIf="!loading">
+        <div class="product-section" *ngFor="let product of products">
+            <h3>{{product.name}}</h3>
+            <p>Price: {{product.price}}</p>
+            <p *ngIf="product.available == 0">Available: {{product.available}} <a [routerLink]="['/cart/add', product.id]" class="btn btn-success disabled">Add to cart</a></p>            
+            <p *ngIf="product.available > 0">Available: {{product.available}} <a [routerLink]="['/cart/add', product.id]" class="btn btn-success">Add to cart</a></p>            
+        </div>
+    </div>
+    <p *ngIf="loading">Loading ...</p>
+
+</div>
+
